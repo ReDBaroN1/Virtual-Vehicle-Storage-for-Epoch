@@ -2,7 +2,7 @@
 
 params["_requestId","_payload"];
 diag_log format["_fnc_handleClientRequest: _requestId = %1 | _payload = %2",_requestId,_payload];
-switch (_requestID) do 
+switch (toLower _requestID) do 
 {
 	case "store": {
 		_payload call VGFE_fnc_storeVehicle;

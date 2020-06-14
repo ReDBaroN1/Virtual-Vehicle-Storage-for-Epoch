@@ -22,7 +22,7 @@ if !(_vehSlot isEqualTo "ABORT") then
 	private _className = typeOf _vehicle;
 	private _location = [getPosATL _vehicle, [vectorDir _vehicle, vectorUp _vehicle]];
 	private _condition = [_vehicle] call VGFE_fnc_getVehicleCondition;
-	private _inventory = _vehicle call EPOCH_server_CargoSave;
+	private _inventory = [_vehicle] call EPOCH_server_CargoSave;
 	private _textures = getObjectTextures _vehicle;
 	private _loadout = [_vehicle] call VGFE_fnc_getVehicleLoadout;
 	private _nickname = getPlateNumber _vehicle;
@@ -33,8 +33,9 @@ if !(_vehSlot isEqualTo "ABORT") then
 	_vgfe pushBack [_vgfeKey,_vehicleData];
 	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpires");
 	["VGFE_DATA", getPlayerUID _player, _expiresAt, _vgfe] call EPOCH_fnc_server_hiveSETEX;
-	diag_log format["_fnc_storeVehicle: hive set with _vgfe = %1",_vgfe];
-	["VGFE_KEY",getPlayerUID _player,_expiresAt,_vgfeKey] call EPOCH_fnc_server_hiveSETEX;
+	["VGFE_KEY",getPlayerUID _player,_expiresAt,[_vgfeKey]] call EPOCH_fnc_server_hiveSETEX;
+
+
 	diag_log format["_fnc_storeVehilcle: key set to = %1",_vgfeKey];
 	MyVGFE = _vgfe;
 	MyVGFEkey = _vgfeKey;

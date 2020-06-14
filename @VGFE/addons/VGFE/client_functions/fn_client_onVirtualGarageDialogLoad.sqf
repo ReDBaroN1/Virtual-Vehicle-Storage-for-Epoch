@@ -65,6 +65,7 @@ private _ctrl = (_display displayCtrl 1500);
 	private _className = _vehicleData select 0;
 	private _index = _ctrl lbAdd getText(configFile >> "CfgVehicles" >> _className >> "displayName");
 	_ctrl lbSetValue [_index,_key];
+	diag_log format["_ctrl lbValue = %1",_ctrl lbValue _index];
 	_ctrl lbSetTooltip [_index,"Select Vehicle To Retrive"];
 } forEach MyVGFE;
 
