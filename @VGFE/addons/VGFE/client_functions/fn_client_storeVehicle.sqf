@@ -1,7 +1,7 @@
-
-
-
-
+/*
+	VGFE_fnc_client_storeVehicle 
+	Copyright Ghostrider-GRG-
+*/
 //params["_ctrl"];
 private _index = lbCurSel 1501;
 private _netIDveh = lbData [1501,_index];

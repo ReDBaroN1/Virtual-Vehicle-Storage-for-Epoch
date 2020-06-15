@@ -2,7 +2,6 @@
 
 
 params["_vgfe","_key","_player"];
-diag_log format["_fnc_retrieveVehicle: _key = %1 | _vgfe = %2 | _player = %3",_key,_vgfe,_player];
 private _vgfeSlot = [];
 private _index = -1;
 if !(EPOCH_VehicleSlots isEqualTo []) then 
@@ -11,10 +10,8 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 	{
 		if (_key == (_x select 0)) exitWith {_vgfeSlot = _x; _index = _forEachIndex};
 	} forEach _vgfe;
-	diag_log format["_fnc_retrieveVehicle: _key = %1 | _index = %2 | _vgfeSlot = %3",_key,_index,_vgfeSlot];
 	private _vgfeSlot = _vgfe select _index;
 	_vgfeSlot params["_key","_vehicleData"];
-	diag_log format["_fnc_retrieveVehicle: _key = %1 | _vehicleData = %2",_key,_vehicleData];
 	_vehicleData params ["_className","_location","_condition","_inventory","_textures","_loadout","_nickname","_vehicleLockState"];
 	{
 		diag_log format["_fnc_retrieveVehicle: _vehicleDate %! = %2",_forEachIndex,_x];
@@ -37,8 +34,8 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		_vehicle setVariable ["BIS_enableRandomization", false];
 		private _slot = EPOCH_VehicleSlots deleteAt 0;
 		missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];	
-		_lockOwner = getPlayerUID _player;
-		_playerGroup = _player getVariable["GROUP", ""];
+		private _lockOwner = getPlayerUID _player;
+		private _playerGroup = _player getVariable["GROUP", ""];
 		if (_playerGroup isEqualTo "") then {
 			_lockOwner = _playerGroup;
 		};
@@ -48,11 +45,12 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		_vehicle setVariable["VEHICLE_SLOT", _slot, true];
 
 		// Lock vehicle for owner
+		private _locked = _vehicleLockState in [1,2,3];
 		if (_locked && _lockOwner != "") then {
-			_vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
+			private _vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 			["VehicleLock", _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
 		} else {
-			_vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
+			private _vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 			["VehicleLock", _vehLockHiveKey] call EPOCH_fnc_server_hiveDEL;
 		};
 
@@ -81,6 +79,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 			_vehicle enableDynamicSimulation true;
 		};
 
+		private _serverSettingsConfig = configFile >> "CfgEpochServer";
 		private _disableVehicleTIE = [_serverSettingsConfig, "disableVehicleTIE", true] call EPOCH_fnc_returnConfigEntry;
 		// Disable Termal Equipment
 		if (_disableVehicleTIE) then {
@@ -111,18 +110,19 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 
 		// Restore any nickname information on license plate 
 		_vehicle setVariable["GRG_nickName",_nickname,true];
-		_vehicle setPlateNumber _vehicleName;
+		_vehicle setPlateNumber _nickname;
 
 		// Setup vehicle inventory
-		[_inventory] call EPOCH_server_cargoFill;
+		[_vehicle,_inventory] call EPOCH_server_cargoFill;
 		
 		_vehicle lock _vehicleLockState;
 		_vehicle allowDamage true;
-		_vehicle enableRopeAttach true;
-		_vehicle setSlingload true;
+		//_vehicle enableRopeAttach true;
+		//_vehicle setSlingload true;
 
 		/* Vehicle successfully spawned, update the VG */
-		MyVGFE = _vgfe deleteAt _index;
+		_vgfe deleteAt _index;
+		MyVGFE = _vgfe;
 		(owner _player) publicvariableclient "MyVGFE";
 		private _playerUID = getPlayerUID _player;
 

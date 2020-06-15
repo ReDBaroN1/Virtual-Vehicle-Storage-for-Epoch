@@ -46,17 +46,17 @@ class CfgFunctions {
             file="VGFE\server_functions";
             class handleClientRequest {};
             class onPlayerJoined {};
-            class getVehicleTexttures {};
-            class getVehicleCondition {};
+           // class getVehicleTexttures {};
+            //class getVehicleCondition {};
             class getVehicleLoadout {};
-            class getVehicleLocation {};
-            class getVehicleInventory {};
+            //class getVehicleLocation {};
+            //class getVehicleInventory {};
             /*                        */
-            class setVehicleCondition {};
+            //class setVehicleCondition {};
             class setVehicleLoadout {};
-            class setVehicleLocation {};
-            class setVehicleTexttures {};
-            class setVehicleInventory {};
+            //class setVehicleLocation {};
+            //class setVehicleTexttures {};
+           // class setVehicleInventory {};
             /*                          */
             class storeVehicle {};
             class retrieveVehicle {};

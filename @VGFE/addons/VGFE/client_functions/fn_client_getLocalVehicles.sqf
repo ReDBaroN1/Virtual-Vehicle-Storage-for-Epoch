@@ -1,4 +1,7 @@
-
+/*
+	VGFE_fnc_client_getLocalVehicles 
+	Copyright Ghostrider-GRG-
+*/
 
 params["_types","_object"];
 private _vehicles = [];

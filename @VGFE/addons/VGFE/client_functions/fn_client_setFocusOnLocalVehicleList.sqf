@@ -1,7 +1,7 @@
-
-
-
-
+/*
+	VGFE_fnc_client_setFocusOnLocalVehicleList 
+	Copyright Ghostrider-GRG-
+*/
 params["_ctrl"];
 _ctrl ctrlSetStructuredText parseText "STORE";
 _ctrl ctrlSetToolTip "Press to Store the Selected Vehicle";

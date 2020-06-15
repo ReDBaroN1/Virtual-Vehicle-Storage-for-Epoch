@@ -1,7 +1,7 @@
-
-
-
-
+/*
+	VGFE_fnc_client_setFocusOnStoredVehicleList 
+	Copyright Ghostrider-GRG-
+*/
 params["_ctrl"];
 private _display = uiNamespace getVariable["VirtualGarageDialog",""];
 private _ctrl = (_display displayCtrl 1600);

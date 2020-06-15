@@ -1,8 +1,6 @@
-
-
-
 /*
-	Returns the jammr and its range or -1;
+	VGFE_fnc_client_getNearbyJammers
+	Copyright Ghostrider-GRG-
 */
 private _jammerRange = getnumber (missionConfigFile >> "CfgEpochClient" >> "buildingJammerRange");
 diag_log format["_fnc_client_getNearbyJammers: _jammerRange = %1",_jammerRange];
