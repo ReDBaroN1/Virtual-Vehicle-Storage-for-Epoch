@@ -1,6 +1,6 @@
 /*
 	VGFE_fnc_client_getLocalVehicles 
-	Copyright Ghostrider-GRG-
+	Copyright 2020 by Ghostrider-GRG-
 */
 
 params["_types","_object"];

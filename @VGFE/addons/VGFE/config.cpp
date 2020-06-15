@@ -27,7 +27,7 @@ class CfgBuild {
     class VirturalGarage {
         build = 1;
         version = 0.1;
-        date = "6-2-20";
+        date = "6-15-20";
     };
 };
 
@@ -46,18 +46,8 @@ class CfgFunctions {
             file="VGFE\server_functions";
             class handleClientRequest {};
             class onPlayerJoined {};
-           // class getVehicleTexttures {};
-            //class getVehicleCondition {};
             class getVehicleLoadout {};
-            //class getVehicleLocation {};
-            //class getVehicleInventory {};
-            /*                        */
-            //class setVehicleCondition {};
             class setVehicleLoadout {};
-            //class setVehicleLocation {};
-            //class setVehicleTexttures {};
-           // class setVehicleInventory {};
-            /*                          */
             class storeVehicle {};
             class retrieveVehicle {};
             class testSendRequest {};

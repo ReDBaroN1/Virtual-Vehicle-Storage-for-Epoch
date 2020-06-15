@@ -1,5 +1,7 @@
-
-
+/*
+	VGFE_fnc_storeVehicle 
+	Copyright 2020 by Ghostrider-GRG-
+*/
 
 params["_vgfe","_vgfeKey","_vehicle","_player"];
 

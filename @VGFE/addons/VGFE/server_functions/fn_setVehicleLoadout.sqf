@@ -1,5 +1,7 @@
-
-
+/*
+	VGFE_fnc_setVehicleLoadout 
+	Copyright 2020 by Ghostrider-GRG-	
+*/
 
 params["_vehicle","_loadout"];
 _loadout params["_turretLoadout","_pylonLoadout"];

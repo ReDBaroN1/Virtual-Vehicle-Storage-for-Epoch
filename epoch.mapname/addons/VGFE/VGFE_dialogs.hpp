@@ -28,6 +28,7 @@ class VGFEDialog
 			colorBackground[] = {0,0,0,0.7};
 			colorBackgroundActive[] = {0,0,0,1};
 			colorText[] = {1,1,1,1};
+			colorTextActive[] = {0,0,0,1};
 			colorDisabled[] = {1,1,1,0.5}; // Disabled text color
 			colorSelect[] = {1,1,1,1}; // Text selection color
 			colorSelect2[] = {1,1,1,1}; // Text selection color (oscillates between this and colorSelect)
@@ -56,7 +57,6 @@ class VGFEDialog
 				width = 0; // width of ListScrollBar
 				height = 0; // height of ListScrollBar
 				scrollSpeed = 0.01; // scroll speed of ListScrollBar
-
 				arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa"; // Arrow
 				arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa"; // Arrow when clicked on
 				border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa"; // Slider background (stretched vertically)
@@ -64,29 +64,7 @@ class VGFEDialog
 
 				color[] = {1,1,1,1}; // Scrollbar color
 			};
-
-			//onCanDestroy = "systemChat str ['onCanDestroy',_this]; true";
-			//onDestroy = "systemChat str ['onDestroy',_this]; false";
-			//onKillFocus = "systemChat str ['onKillFocus',_this]; false";
-			//onKeyDown = "systemChat str ['onKeyDown',_this]; false";
-			//onKeyUp = "systemChat str ['onKeyUp',_this]; false";
-			//onMouseButtonDown = "systemChat str ['onMouseButtonDown',_this]; false";
-			//onMouseButtonUp = "systemChat str ['onMouseButtonUp',_this]; false";
-			onMouseButtonClick = "systemChat str ['onMouseButtonClick',_this]; false";
-			//onMouseButtonDblClick = "systemChat str ['onMouseButtonDblClick',_this]; false";
-			//onMouseZChanged = "systemChat str ['onMouseZChanged',_this]; false";
-			//onMouseMoving = "";
-			//onMouseHolding = "";
-
-		  	//onSetFocus = "systemChat str ['onSetFocus: Stored Vehicles',_this]; false;[] call VGFE_fnc_clientSetFocusOnStoredVehicleList";
-			onLBSelChanged = "systemChat str ['onLBSelChanged: Stored Vehicles',_this]; false;[] call VGFE_fnc_client_onLbSelChangedStoredVehicleList";
-			//onMouseEnter = "systemChat str ['onMouseEnter',_this]; false; [] call VGFE_fnc_clientOnMouseEnterStoredVehicleList";
-			//onMouseExit = "systemChat str ['onMouseExit',_this]; false; [] call VGFE_fnc_clienonMouseExitStoredVehiclesList";			
-			//onLBDblClick = "systemChat str ['onLBDblClick: Stored Vehicles',_this]; false";
-			//onLBDrag = "systemChat str ['onLBDrag',_this]; false";
-			//onLBDragging = "systemChat str ['onLBDragging',_this]; false";
-			//onLBDrop = "systemChat str ['onLBDrop',_this]; false";
-			
+			onLBSelChanged = "[] call VGFE_fnc_client_onLbSelChangedStoredVehicleList";
 			idc = 1500;
 			x = 0.247344 * safezoneW + safezoneX;
 			y = 0.247 * safezoneH + safezoneY;
@@ -97,21 +75,8 @@ class VGFEDialog
 		class VGFE_LocalVehicles: VGFE_StoredVehicles
 		{
 			idc = 1501;
-
-			//colorBackground[] = {0,0,0,0.7};
-			//colorBackgroundActive[] = {0,0,0,1};
-			//colorText[] = {1,1,1,1};			
-			//style = 530;
 			tooltip = "Select a Vehicle to Store"; // Tooltip text			
-
-			onMouseButtonClick = "systemChat str ['onMouseButtonClick for Local Vehicles',_this]; false";
-
-			//onMouseHolding = "";
-
-			onLBSelChanged = "systemChat str ['onLBSelChanged for Local Vehicles',_this]; false; [] call VGFE_fnc_client_onLbSelChangedLocalVehicleList";
-			//onMouseEnter = "systemChat str ['onMouseEnter',_this]; false; [] call VGFE_fnc_clientOnMouseEnterLocalVehicleList";
-			//onMouseExit = "systemChat str ['onMouseExit',_this]; false; [] call VGFE_fnc_clienonMouseExitLocalVehiclesList";
-		
+			onLBSelChanged = "[] call VGFE_fnc_client_onLbSelChangedLocalVehicleList";
 			x = 0.5825 * safezoneW + safezoneX;
 			y = 0.247 * safezoneH + safezoneY;
 			w = 0.165 * safezoneW;
@@ -120,10 +85,10 @@ class VGFEDialog
 		class VGFE__pictures: RscPicture
 		{
 			style = 48;//ST_PICTURE
-			
 			idc = 1200;
 			// Update this as vehicles are selected and with either hanger or dock localizations
-			text ="\A3\EditorPreviews_F_Exp\Data\CfgVehicles\Land_Addon_05_F.jpg";
+			//text = "\A3\EditorPreviews_F_Exp\Data\CfgVehicles\Land_Addon_05_F.jpg";
+			text = "\A3\Soft_F_Exp\Offroad_01\Data\UI\map_Offroad_01_gen_CA.paa";
 			x = 0.427812 * safezoneW + safezoneX;
 			y = 0.247 * safezoneH + safezoneY;
 			w = 0.144375 * safezoneW;
@@ -137,9 +102,6 @@ class VGFEDialog
 			w = 0.134062 * safezoneW;
 			h = 0.044 * safezoneH;
 			text = "Vehicle Nickname";  // For the nickname
-			//colorBackground[] = {0.1,0.1,0.1,1};
-			//colorText[] = {1,1,1,1};
-
 		};
 		class VGFE_executeStoreRetrieve: RscButton
 		{
@@ -148,13 +110,7 @@ class VGFEDialog
 			y = 0.621 * safezoneH + safezoneY;
 			w = 0.144375 * safezoneW;
 			h = 0.0449999 * safezoneH;
-
-			//tooltip = "Selecte a Vehicle";
-			//colorBackground[] = {0.1,0.1,0.1,1};
 			colorText[] = {1,1,1,1};			
-			// Action to be updated based on whether a vehicle in the VG or local to player is selected.			
-          	//onButtonClick = "closeDialog 0;";  //"call ExileClient_VirtualGarage_network_StoreVehicleRequest";
-			//action = "closeDialog 0;";	
 			text = "Action Button";	  			
 		};
 		class VGFE_ButtonMenuCancel: RscButtonMenuCancel
@@ -163,7 +119,6 @@ class VGFEDialog
 			y = 0.731 * safezoneH + safezoneY;
 			w = 0.0825 * safezoneW;
 			h = 0.022 * safezoneH;
-
 			colorText[] = {1,1,1,1};
 			colorBackground[] = {0,0,0,1};
 			idc = 2;
@@ -187,15 +142,14 @@ class VGFEDialog
 		class progressLoading: RscProgress
 		{
 			idc = 1008;
-			//onLoad = "_this spawn {params ['_ctrlProgress']; for '_i' from 0.1 to 1.1 step 0.1 do {_ctrlProgress progressSetPosition _i; sleep 0.4;};}";
 			type = 8;
 			style = 0;
 			colorFrame[] = {0,0,0,1};
 			colorBar[] =
 			{
-				"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])",
-				"(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])",
-				"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])",
+				"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.10])",
+				"(profilenamespace getvariable ['GUI_BCG_RGB_G',0.83])",
+				"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.211.0])",
 				"(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
 			};
 			shadow = 2;
@@ -237,7 +191,7 @@ class VGFEDialog
 			colorText[] = {0,0,0,1};
 			colorBackground[] = {1,1,1,0};
 		};			
-				////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////
 		// GUI EDITOR OUTPUT END
 		////////////////////////////////////////////////////////
 	};

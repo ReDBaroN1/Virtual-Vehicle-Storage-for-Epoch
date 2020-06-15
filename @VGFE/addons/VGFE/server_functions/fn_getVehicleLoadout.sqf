@@ -1,6 +1,8 @@
-
-
-
+/*
+	VGFE_fnc_getVehicleLoadout 
+	Copyright 2020 by Ghostrider-GRG-
+*/
+	
 params["_vehicle"];
 private _magazinesAmmoLoadout = magazinesAmmoFull _vehicle;
 private _pylonAmmoAllowedRaw = _vehicle getCompatiblePylonMagazines 0;  // all pylon ammmo on vehicle

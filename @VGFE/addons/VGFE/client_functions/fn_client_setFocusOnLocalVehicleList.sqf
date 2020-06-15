@@ -1,6 +1,6 @@
 /*
 	VGFE_fnc_client_setFocusOnLocalVehicleList 
-	Copyright Ghostrider-GRG-
+	Copyright 2020 by Ghostrider-GRG-
 */
 params["_ctrl"];
 _ctrl ctrlSetStructuredText parseText "STORE";

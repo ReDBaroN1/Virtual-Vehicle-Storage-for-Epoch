@@ -5,10 +5,10 @@
 private _display = uiNamespace getVariable["VirtualGarageDialog",""];	
 private _ctrl = (_display displayCtrl 1501);
 private _index = lbCurSel 1501;
-systemChat format["_ctrl = %1 | _index = %2",_ctrl,_index];
+//systemChat format["_ctrl = %1 | _index = %2",_ctrl,_index];
 private _netID = _ctrl lbData _index;  //  object
 private _className = typeOf (objectFromNetId _netId);  //  description based on classname
-systemChat format["_veh = %1 | _vehType = %2",_veh,_vehType];
+//systemChat format["_veh = %1 | _vehType = %2",_veh,_vehType];
 private _ctrlVehDescription = (_display displayCtrl 1001);
 private _ctrlVehicleNickname = (_display displayCtrl 1009);
 _ctrlVehDescription ctrlSetStructuredText parseText getText(conifgFile >> "CfgVehicles" >> _className >> "displayName");

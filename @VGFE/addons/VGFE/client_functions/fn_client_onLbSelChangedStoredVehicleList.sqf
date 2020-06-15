@@ -1,6 +1,6 @@
 /*
 	VGFE_fnc_client_onLbSelChangedStoredVehiclesList 
-	Copyright Ghostrider-GRG-
+	Copyright 2020 by Ghostrider-GRG-
 */
 private _display = uiNamespace getVariable["VirtualGarageDialog",""];	
 private _ctrl = (_display displayCtrl 1500);

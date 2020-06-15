@@ -1,6 +1,6 @@
 /*
 	VGFE_fnc_client_retrieveVehicle
-	Copyright Ghostrider-GRG-
+	Copyright 2020 by Ghostrider-GRG-
 */
 params["_ctrl"];
 private _display = uiNamespace getVariable["VirtualGarageDialog",""];

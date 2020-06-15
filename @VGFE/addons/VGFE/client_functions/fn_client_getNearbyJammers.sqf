@@ -1,6 +1,6 @@
 /*
 	VGFE_fnc_client_getNearbyJammers
-	Copyright Ghostrider-GRG-
+	Copyright 2020 by Ghostrider-GRG-
 */
 private _jammerRange = getnumber (missionConfigFile >> "CfgEpochClient" >> "buildingJammerRange");
 diag_log format["_fnc_client_getNearbyJammers: _jammerRange = %1",_jammerRange];

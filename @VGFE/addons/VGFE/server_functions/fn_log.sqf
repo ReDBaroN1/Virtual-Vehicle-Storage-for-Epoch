@@ -1,3 +1,8 @@
+/*
+	VGFE_fnc_log 
+	Copyright 2020 by Ghostrider-GRG-
+*/
+
 params["_msessage",['_state",""]']];
 private "_stateMessage";
 switch (_state) do 

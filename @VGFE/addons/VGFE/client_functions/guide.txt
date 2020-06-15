@@ -1,18 +1,2 @@
 
-1. Use the existing Epoch code to change license plates with dynamenu 
-2. setup dynamenu to open VG dialog.
-  This dialog will be modified based on object type to be garage (all vehicles), hanger (air only), or sea (boats only).
-  That will involve changing text and pics for some of the controls. 
-  Tasks:
-    Open dialog 
-    Update dialog controls for garage type and to have nothing selected
-    Get local vehicles filtered by VG category.
-    Populate local vehicles list
-    Populate VG vehicles list
-
-onlbselectVG entry
-    update index
-onlbselect local entry 
-    update index 
-onSelect VG - pull params and call VG_server 
-onSelect local - pull params and call VG-server
+< Intentionally Blank >

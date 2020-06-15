@@ -1,5 +1,7 @@
-
-
+/*
+	VGFE_fnc_retrieveVehicle 
+	Copyright 2020 by Ghostrider-GRG-
+*/
 
 params["_vgfe","_key","_player"];
 private _vgfeSlot = [];

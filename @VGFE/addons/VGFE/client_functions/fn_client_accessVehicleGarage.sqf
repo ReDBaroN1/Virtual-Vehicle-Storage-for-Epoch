@@ -1,6 +1,6 @@
 /*
 	VGFE_fnc_client_accessVehicleGarage 
-	Copyright Ghostrider-GRG-
+	Copyright 2020 by Ghostrider-GRG-
 */
 //diag_log format["accessVehicleGarage called at %1",diag_tickTime];
 params["_storageType"];

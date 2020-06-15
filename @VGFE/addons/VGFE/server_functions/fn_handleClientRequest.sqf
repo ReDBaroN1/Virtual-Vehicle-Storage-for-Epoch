@@ -1,4 +1,7 @@
-
+/*
+	VGFE_fnc_handleClientRequest 
+	Copyright 2020 by Ghostrider-GRG-	
+*/
 
 params["_requestId","_payload"];
 diag_log format["_fnc_handleClientRequest: _requestId = %1 | _payload = %2",_requestId,_payload];
