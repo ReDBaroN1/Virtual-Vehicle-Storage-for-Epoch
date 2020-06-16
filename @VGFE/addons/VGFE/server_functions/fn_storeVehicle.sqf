@@ -30,20 +30,20 @@ if !(_vehSlot isEqualTo "ABORT") then
 	private _nickname = getPlateNumber _vehicle;
 	private _vehicleLockState = locked _vehicle;
 	private _vehicleData = [_className,_location,_condition,_inventory,_textures,_loadout,_nickname,_vehicleLockState];
-	//(["VGkey", _uid] call EPOCH_fnc_server_hiveGETRANGE) params [["_key",-1]];
 
 	_vgfe pushBack [_vgfeKey,_vehicleData];
-	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpires");
-	["VGFE_DATA", getPlayerUID _player, _expiresAt, _vgfe] call EPOCH_fnc_server_hiveSETEX;
-	["VGFE_KEY",getPlayerUID _player,_expiresAt,[_vgfeKey]] call EPOCH_fnc_server_hiveSETEX;
-
-
 	diag_log format["_fnc_storeVehilcle: key set to = %1",_vgfeKey];
 	MyVGFE = _vgfe;
 	MyVGFEkey = _vgfeKey;
 	(owner _player) publicVariableClient "MyVGFE";
 	(owner _player) publicVariableClient "MyVGFEkey";
-	diag_log format["_fnc_storeVehicle: _MyVGFEkey %1 | MyVGFE %2",MyVGFEkey,MyVGFE];
+	diag_log format["_fnc_storeVehicle: _MyVGFEkey %1 | MyVGFE %2",MyVGFEkey,MyVGFE];	
+	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpires");
+	["VGFE_DATA", getPlayerUID _player, _expiresAt, MyVGFE] call EPOCH_fnc_server_hiveSETEX;
+	["VGFE_KEY",getPlayerUID _player,_expiresAt,[MyVGFEkey]] call EPOCH_fnc_server_hiveSETEX;
+
+
+
 	deleteVehicle _vehicle;	
 
 	/*

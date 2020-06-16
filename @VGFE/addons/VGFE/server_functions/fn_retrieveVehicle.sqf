@@ -4,6 +4,13 @@
 */
 
 params["_vgfe","_key","_player"];
+
+/* we can only process one client request at a time so add a check for a pendiing request to access VG */
+waitUntil{MyVGFEstate == 1};
+
+/* Tell the server a request is pending */
+MyVGFEstate = 0;
+
 private _vgfeSlot = [];
 private _index = -1;
 if !(EPOCH_VehicleSlots isEqualTo []) then 
@@ -152,5 +159,5 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 	["Insufficient Room on Server to Retrieve Vehicle: Contact Server Owner"] remoteExec["diag_log",owner _player];
 };
 
-
+MyVGFEstate = 1;
 

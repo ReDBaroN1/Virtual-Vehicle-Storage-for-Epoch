@@ -14,7 +14,7 @@ switch (MyVFGFstorageMode) do
 };
 private _localVehicles = [_vehTypes,MyVFGFstorageMode] call VGFE_fnc_client_getLocalVehicles;
 private _controls =  [1000,1005,1006,1007,1009,1600,1500,1501,2];
-private _controls =  [1005,1009,1600,1500,1501,2];
+private _controls =  [2];
 {
 	ctrlShow[_x,false];
 } forEach _controls;
@@ -64,19 +64,15 @@ switch (MyVFGFstorageMode) do
 {
 	case 'garage': {};
 	case 'hanger': {
-		//picture at 1200 
-		// Title at 1005
-		private _ctrl = (_display displayCtrl 1007);
-		_ctrl ctrlSetText "Virtual Hanger Vehicle Storage";
+		private _ctrl = (_display displayCtrl 1010);
+		_ctrl ctrlSetText "Hanger";
 		_ctrl = (_display displayCtrl 1200);
-		//_ctrl ctrlSetText "\A3\EditorPreviews_F\Data\CfgVehicles\Land_Hangar_F.jpg";
 		_ctrl ctrlSetText "\A3\Air_F_EPC\Plane_CAS_01\Data\UI\Map_Plane_CAS_01_CA.paa";
 	};
 	case 'dock': {
-		private _ctrl = (_display displayCtrl 1007);
-		_ctrl ctrlSetText "Virtual Dock Vehicle Storage";
+		private _ctrl = (_display displayCtrl 1010);
+		_ctrl ctrlSetText "Dry Dock";
 		_ctrl = (_display displayCtrl 1200);
-		//_ctrl ctrlSetText "\A3\EditorPreviews_F_Destroyer\Data\CfgVehicles\Land_Destroyer_01_Boat_Rack_01_F.jpg";
 		_ctrl ctrlSetText "\A3\boat_f\Boat_Armed_01\data\ui\map_boat_armed_01_minigun.paa";
 	};
 };
