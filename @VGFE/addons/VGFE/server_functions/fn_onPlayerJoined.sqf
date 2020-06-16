@@ -10,7 +10,12 @@ private ["_status","_vgfe"];
 if ((_querry select 0) == 1 && (_querry select 1) isEqualType []) then 
 {
 	MyVGFE = _querry select 1;
-	//diag_log format["_fnc_onPlayerJoined: _status = %1 | _vgfe = %2",_status,_vgfe];
+	if !(MyVGFE isEqualTo []) then 
+	{
+		/* The player has logged on so lets be sure we update the expiresAt time */
+		private _expiresAt = getText(missionConfigFile >> "CfgVGFE" >> "vgfeExpiresAt");
+		["VGFE_DATA",_uid,_expiresAt] call EPOCH_fnc_server_hiveEXPIRE;
+	};
 } else {
 	/*  some sort of error occured */
 	MyVGFE = [];
@@ -22,7 +27,12 @@ private ["_status","_vgfeKey"];
 if ((_querry2 select 0) == 1 && (_querry2 select 1) isEqualType []) then 
 {
 	MyVGFEkey = if ((_querry2 select 1) isEqualTo []) then {0} else {(_querry2 select 1) select 0};
-	diag_log format["_fnc_onPlayerJoined: _status = %1 | _vgfeKey = %2",_status,_vgfeKey];
+	if !(MyVGFEkey == 0) then 
+	{
+		/* The player has logged on so lets be sure we update the expiresAt time */
+		private _expiresAt = getText(missionConfigFile >> "CfgVGFE" >> "vgfeExpiresAt");
+		["VGFE_KEY",_uid,_expiresAt] call EPOCH_fnc_server_hiveEXPIRE;		
+	};
 } else {
 	MyVGFEkey = 0;	
 };

@@ -12,14 +12,12 @@ waitUntil{MyVGFEstate == 1};
 MyVGFEstate = 0;
 
 private _p = ["_vgfe","_vgfeKey","_vehicle","_player"];
-{
-	diag_log format["_fnc_storeVehicle: _this %1 = %2",_forEachIndex,_x];
-} forEach _this;
+
 private _vehSlot = _vehicle getVariable ["VEHICLE_SLOT", "ABORT"];
 if !(_vehSlot isEqualTo "ABORT") then 
 {  //  So we do not store temporary vehicles
 	_vgfeKey = _vgfeKey + 1;
-	/*  tie this to configs at some point */
+
 	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpires");
 	private _className = typeOf _vehicle;
 	private _location = [getPosATL _vehicle, [vectorDir _vehicle, vectorUp _vehicle]];
@@ -32,17 +30,13 @@ if !(_vehSlot isEqualTo "ABORT") then
 	private _vehicleData = [_className,_location,_condition,_inventory,_textures,_loadout,_nickname,_vehicleLockState];
 
 	_vgfe pushBack [_vgfeKey,_vehicleData];
-	diag_log format["_fnc_storeVehilcle: key set to = %1",_vgfeKey];
 	MyVGFE = _vgfe;
 	MyVGFEkey = _vgfeKey;
 	(owner _player) publicVariableClient "MyVGFE";
 	(owner _player) publicVariableClient "MyVGFEkey";
-	diag_log format["_fnc_storeVehicle: _MyVGFEkey %1 | MyVGFE %2",MyVGFEkey,MyVGFE];	
 	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpires");
 	["VGFE_DATA", getPlayerUID _player, _expiresAt, MyVGFE] call EPOCH_fnc_server_hiveSETEX;
 	["VGFE_KEY",getPlayerUID _player,_expiresAt,[MyVGFEkey]] call EPOCH_fnc_server_hiveSETEX;
-
-
 
 	deleteVehicle _vehicle;	
 

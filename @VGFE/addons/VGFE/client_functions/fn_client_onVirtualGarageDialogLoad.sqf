@@ -14,7 +14,7 @@ switch (MyVFGFstorageMode) do
 };
 private _localVehicles = [_vehTypes,MyVFGFstorageMode] call VGFE_fnc_client_getLocalVehicles;
 private _controls =  [1000,1005,1006,1007,1009,1600,1500,1501,2];
-private _controls =  [2];
+private _controls =  [2,1009,1600,1009,1010];
 {
 	ctrlShow[_x,false];
 } forEach _controls;
