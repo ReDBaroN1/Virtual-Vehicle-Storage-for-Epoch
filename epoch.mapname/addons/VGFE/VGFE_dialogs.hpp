@@ -160,7 +160,7 @@ class VGFEDialog
 			h = 0.033 * safezoneH;
 
 			shadow = 2;
-			texture = "#(argb,8,8,3)color(1,1,1,1)"
+			texture = "#(argb,8,8,3)color(1,1,1,1)";
 		};		
 		class topDecroative: RscText
 		{
@@ -172,15 +172,13 @@ class VGFEDialog
 			colorBackground[] = {1,1,1,1.0};
 			shadow = 2;
 		};
-		class bottomDecorative: RscText
+		class bottomDecorative: topDecroative
 		{
 			idc = 1006;
 			x = 0.247344 * safezoneW + safezoneX;
 			y = 0.698 * safezoneH + safezoneY;
 			w = 0.500156 * safezoneW;
-			h = 0.022 * safezoneH;
-			colorBackground[] = {1,1,1,0.8};
-			shadow = 2;			
+			h = 0.022 * safezoneH;		
 		};	
 		class Header: RscText
 		{
@@ -209,7 +207,7 @@ class VGFEDialog
 		};
 		class columnLabelBase: columnLabelGarage
 		{
-			idc = 1009;
+			idc = 1011;
 
 			text = "Base";
 			x = 0.635093 * safezoneW + safezoneX;	
