@@ -1,5 +1,9 @@
 
 
+
+
+
+
 class VGFEDialog
 {
     idd = 0720;
@@ -142,31 +146,31 @@ class VGFEDialog
 		class progressLoading: RscProgress
 		{
 			idc = 1008;
-			type = 8;
-			style = 0;
 			colorFrame[] = {0,0,0,1};
-			colorBar[] =
-			{
-				"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.10])",
+			colorBar[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.10])",
 				"(profilenamespace getvariable ['GUI_BCG_RGB_G',0.83])",
-				"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.211.0])",
-				"(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
+				"(profilenamespace getvariable ['GUI_BCG_RGB_B',1.0])",
+				"(profilenamespace getvariable ['GUI_BCG_RGB_A',0.99])"
 			};
+			colorText[] = {0.1,0.83,1,0.8};
+			colorBackground[] = {1,1,1,0.9999};
+			x = 0.257656 * safezoneW + safezoneX;
+			y = 0.126 * safezoneH + safezoneY;
+			w = 0.469219 * safezoneW;
+			h = 0.033 * safezoneH;
+
 			shadow = 2;
-			texture = "#(argb,8,8,3)color(1,1,1,1)";			
-			x = 0.29375 * safezoneW + safezoneX;
-			y = 0.211 * safezoneH + safezoneY;
-			w = 0.407344 * safezoneW;
-			h = 0.025 * safezoneH;
+			texture = "#(argb,8,8,3)color(1,1,1,1)"
 		};		
 		class topDecroative: RscText
 		{
 			idc = 1005;
 			x = 0.247344 * safezoneW + safezoneX;
-			y = 0.214 * safezoneH + safezoneY;
+			y = 0.181 * safezoneH + safezoneY;
 			w = 0.500156 * safezoneW;
-			h = 0.022 * safezoneH;
-			colorBackground[] = {1,1,1,0.8};
+			h = 0.055 * safezoneH;
+			colorBackground[] = {1,1,1,1.0};
+			shadow = 2;
 		};
 		class bottomDecorative: RscText
 		{
@@ -176,21 +180,40 @@ class VGFEDialog
 			w = 0.500156 * safezoneW;
 			h = 0.022 * safezoneH;
 			colorBackground[] = {1,1,1,0.8};
+			shadow = 2;			
 		};	
 		class Header: RscText
 		{
 			idc = 1007;
-			style = ST_CENTER;
-			text = "Virtual Vehicle Storage"; //--- ToDo: Localize;
-			size = GUI_TEXT_SIZE_LARGE;
-			sizeEx = GUI_TEXT_SIZE_LARGE;			
-			x = 0.350469 * safezoneW + safezoneX;
-			y = 0.17 * safezoneH + safezoneY;
-			w = 0.299062 * safezoneW;
-			h = 0.033 * safezoneH;
+			style = 2;
+			size = 1.5;
+
+			text = "Virtual Vehicle Storage"; 
+			x = 0.430907 * safezoneW + safezoneX;
+			y = 0.1986 * safezoneH + safezoneY;
+			w = 0.149531 * safezoneW;
+			h = 0.034 * safezoneH;
 			colorText[] = {0,0,0,1};
-			colorBackground[] = {1,1,1,0};
-		};			
+			colorBackground[] = {0,0,0,0};
+			sizeEx = 1.5 * GUI_GRID_H;
+			shadow = 2;			
+		};
+		class columnLabelGarage: Header
+		{
+			idc = 1010;
+
+			text = "Garage"; 
+			x = 0.297871 * safezoneW + safezoneX;
+			y = 0.1986 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;		
+		};
+		class columnLabelBase: columnLabelGarage
+		{
+			idc = 1009;
+
+			text = "Base";
+			x = 0.635093 * safezoneW + safezoneX;	
+		};		
 		////////////////////////////////////////////////////////
 		// GUI EDITOR OUTPUT END
 		////////////////////////////////////////////////////////
