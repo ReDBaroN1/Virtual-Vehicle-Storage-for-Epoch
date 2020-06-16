@@ -7,8 +7,9 @@ private _ctrl = (_display displayCtrl 1501);
 private _index = lbCurSel 1501;
 //systemChat format["_ctrl = %1 | _index = %2",_ctrl,_index];
 private _netID = _ctrl lbData _index;  //  object
-private _className = typeOf (objectFromNetId _netId);  //  description based on classname
-//systemChat format["_veh = %1 | _vehType = %2",_veh,_vehType];
+private _vehicle = objectFromNetId _netId;
+private _className = typeOf (_vehicle);  //  description based on classname
+private _m = format["_netId = %1 | _vehicle = %2 | _className = %3",_netID,_vehicle,_className];
 private _ctrlVehDescription = (_display displayCtrl 1001);
 private _ctrlVehicleNickname = (_display displayCtrl 1009);
 _ctrlVehDescription ctrlSetStructuredText parseText getText(conifgFile >> "CfgVehicles" >> _className >> "displayName");

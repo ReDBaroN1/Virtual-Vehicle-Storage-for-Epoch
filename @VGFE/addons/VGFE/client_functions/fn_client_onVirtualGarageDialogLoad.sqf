@@ -13,11 +13,11 @@ switch (MyVFGFstorageMode) do
 	case "dock": {_vehTypes = ["Ship"]};
 };
 private _localVehicles = [_vehTypes,MyVFGFstorageMode] call VGFE_fnc_client_getLocalVehicles;
-private _controls =  [1000,1005,1006,1007,1009,1600,1500,1501,2];
-private _controls =  [2,1009,1600,1009,1010];
+
+ 
 {
 	ctrlShow[_x,false];
-} forEach _controls;
+} forEach [2,1009,1600,1009,1010,1011];
 
 private _display = uiNamespace getVariable["VirtualGarageDialog",""];
 private _ctrl = (_display displayCtrl 1001);
@@ -25,7 +25,7 @@ _ctrl ctrlSetText "LOADING";
 for "_i" from 1 to 20 do 
 {
 	(_display displayCtrl 1008) progressSetPosition (_i/20);
-	uiSleep 0.025;
+	uiSleep 0.05;
 	switch (_i) do 
 	{
 		case 4: {_ctrl ctrlSetText "LOADING .";};
@@ -37,12 +37,23 @@ for "_i" from 1 to 20 do
 };
 
 uiSleep 0.25;
-_ctrl ctrlSetText "Select a Vehicle";
-{
-	ctrlShow[_x,true];
-} forEach [1000,1005,1006,1007,1500,1501,2];
 
 ctrlShow[1008,false];
+
+if ( !(MyVGFE isEqualTo []) || !(_localVehicles isEqualTo []) ) then 
+{
+	_ctrl ctrlSetText "Select a Vehicle";
+	{
+		ctrlShow[_x,true];
+	} forEach [1000,1005,1006,1007,1010,1011,1500,1501,2];
+} else {
+	_ctrl ctrlSetText "No Vehicles Found";
+	_ctrl ctrlSetTooltip "Please Enter Vehicles Before Storing Them";
+	{
+		ctrlShow[_x,true];
+	} forEach [1000,1005,1006,1007,1010,1011,1500,1501,2];	
+};
+
 
 private _ctrl = (_display displayCtrl 1500);
 {
@@ -59,6 +70,7 @@ private _ctrl2 = (_display displayCtrl 1501);
 	_ctrl2 lbSetData[_index,netID _x];
 	_ctrl2 lbSetTooltip[_index,"Select Vehicle to Store"];
 } forEach _localVehicles;
+
 MyVGFELocalVehicles = _localVehicles;
 switch (MyVFGFstorageMode) do 
 {
@@ -76,3 +88,5 @@ switch (MyVFGFstorageMode) do
 		_ctrl ctrlSetText "\A3\boat_f\Boat_Armed_01\data\ui\map_boat_armed_01_minigun.paa";
 	};
 };
+
+VGFE_activeList = "";
