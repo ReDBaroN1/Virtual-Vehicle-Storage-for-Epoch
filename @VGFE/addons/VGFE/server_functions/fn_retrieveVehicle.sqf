@@ -147,13 +147,13 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		private _playerUID = getPlayerUID _player;
 
 		/* pull this from configs */ 
-		private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpires");
+		private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpiresAt");
 		["VGFE_DATA",_playerUID,_expiresAt,_vgfe] call EPOCH_fnc_server_hiveSETEX;
 		private _displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
 		private _m = format["%1 has been retrieved from the garage",_displayName];
 		[_m] remoteExec["systemChat",owner _player];
 		[_m] remoteExec["diag_log",owner _player];
-		[_m] remoteExec["EPOCH_Message",owner _player];
+		[_m,5] remoteExec["EPOCH_Message",owner _player];
 		[_vehicle] remoteExec["VGFE_fnc_client_vehicleRetrieved",owner _player];
 	} else {
 		private _displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
