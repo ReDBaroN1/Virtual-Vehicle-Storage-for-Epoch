@@ -3,7 +3,7 @@
 After downloading and decompression the files from github do the following:
 
 <SERVER>
-1. copy @VGFE into the root directory for your server, where @exileserver is kept.
+1. copy @VGFE into the root directory for your server, where @epochhive is kept.
 2. pack @VGFE\addons\vgfe (to VGFE.pbo) using PBO manager or another PBO tool.
 3. edit the startup parameters for your server as follows: 
     Add @VGFE; to "-servermod= " 
