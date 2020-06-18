@@ -1,4 +1,5 @@
 /*
     Merge with your description.ext
 */
-
+#include "addons\VGFE\CfgVGFE.hpp"
+#include "addons\VGFE\VGFE_defines.hpp"
