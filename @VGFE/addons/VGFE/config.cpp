@@ -67,6 +67,7 @@ class CfgFunctions {
             class client_setFocusOnLocalVehicleList {};
             class client_setFocusOnStoredVehicleList {};
             class client_retrieveVehicle {};
+            class client_vehicleRetrieved {};            
             class client_storeVehicle {};
             class client_init {};
             class client_log {};

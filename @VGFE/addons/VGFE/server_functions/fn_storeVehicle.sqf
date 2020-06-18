@@ -34,11 +34,18 @@ if !(_vehSlot isEqualTo "ABORT") then
 	MyVGFEkey = _vgfeKey;
 	(owner _player) publicVariableClient "MyVGFE";
 	(owner _player) publicVariableClient "MyVGFEkey";
-	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpires");
+	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpiresAt");
+	//diag_log format["_fnc_storeVehicle: _expiresAt = %1 | typeName _expiresAt = %2",_expiresAt, typeName _expiresAt];
 	["VGFE_DATA", getPlayerUID _player, _expiresAt, MyVGFE] call EPOCH_fnc_server_hiveSETEX;
 	["VGFE_KEY",getPlayerUID _player,_expiresAt,[MyVGFEkey]] call EPOCH_fnc_server_hiveSETEX;
 
 	deleteVehicle _vehicle;	
+
+	private _storageCost = getNumber(missionConfigFile >> "CfgVGFE" >> "storageCost");
+	if (_storageCost > 0) then 
+	{
+		[_player,(_storageCost * -1)] call EPOCH_server_effectCrypto;
+	};
 
 	/*
 		The code below was adapted from files in epoch_server.
@@ -53,6 +60,8 @@ if !(_vehSlot isEqualTo "ABORT") then
 	[format["Vehicle Stored | _key updated to %1",MyVGFEkey]] remoteExec["systemChat",owner _player];
 	["Vehicle Stored",5] remoteExec["Epoch_Message",owner player];
 	[format["Vehicle Stored | _key updated to %1",MyVGFEkey]] remoteExec["diag_log",owner _player];
+
+
 };
 
 /* tell the server the VG is ready to handle other requests */

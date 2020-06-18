@@ -22,9 +22,6 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 	private _vgfeSlot = _vgfe select _index;
 	_vgfeSlot params["_key","_vehicleData"];
 	_vehicleData params ["_className","_location","_condition","_inventory","_textures","_loadout","_nickname","_vehicleLockState"];
-	{
-		diag_log format["_fnc_retrieveVehicle: _vehicleDate %! = %2",_forEachIndex,_x];
-	} forEach _vehicleData;
 	_location params ["_posATL","_vectorUpDir"];	
 
 	/*
@@ -124,11 +121,25 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		// Setup vehicle inventory
 		[_vehicle,_inventory] call EPOCH_server_cargoFill;
 		
-		_vehicle lock _vehicleLockState;
 		_vehicle allowDamage true;
-		//_vehicle enableRopeAttach true;
-		//_vehicle setSlingload true;
 
+		private _moveIntoVehicle = getNumber(missionConfigFile >> "CfgVGFE" >> "movePlayerToDriver");
+		private _lockOnRetrieval = getNumber(missionConfigFile >> "CfgVGFE" >> "lockOnRetrieval");
+		//diag_log format["_fnc_retrieveVehicle: _moveIntoVehicle = %1 | _lockOnRetrieval = %2 | _vehicleLockState = %3",_moveIntoVehicle,_lockOnRetrieval,_vehicleLockState];
+		if (_moveIntoVehicle == 1) then 
+		{
+			_vehicle setOwner (owner _player);
+			[_player,_vehicle] remoteExec["moveInDriver", (owner _player)];
+			_vehicle lock 0;
+		} else {
+			if (_lockOnRetrieval == 1) then 
+			{
+				_vehicle lock 2;
+			} else {
+				_vehicle lock _vehicleLockState;
+			};
+		};
+	
 		/* Vehicle successfully spawned, update the VG */
 		_vgfe deleteAt _index;
 		MyVGFE = _vgfe;
@@ -143,6 +154,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		[_m] remoteExec["systemChat",owner _player];
 		[_m] remoteExec["diag_log",owner _player];
 		[_m] remoteExec["EPOCH_Message",owner _player];
+		[_vehicle] remoteExec["VGFE_fnc_client_vehicleRetrieved",owner _player];
 	} else {
 		private _displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
 		_m = format["Unable to retrieve %1 from the garage",_displayName];
