@@ -116,7 +116,8 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		_vehicle setDamage _damage;
 		_hpd params ["_hitpoints","_hpDamage"];
 		{
-			_vehicle setHitPointDamage [_x, _hpDamage select _forEachIndex];
+//			_vehicle setHitPointDamage [_x, _hpDamage select _forEachIndex];
+			_vehicle setHitIndex [_foreachindex, _hpDamage select _forEachIndex];
 		} forEach _hitpoints;
 		_vehicle allowDamage false;
 
