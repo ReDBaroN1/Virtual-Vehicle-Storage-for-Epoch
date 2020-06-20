@@ -3,7 +3,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 
-params["_vgfe","_vgfeKey","_vehicle","_player"];
+params["_vgfe","_vgfeKey","_accessPoint","_vehicle","_player"];
 
 /* we can only process one client request at a time so add a check for a pendiing request to access VG */
 waitUntil{MyVGFEstate == 1};
@@ -11,7 +11,7 @@ waitUntil{MyVGFEstate == 1};
 /* Tell the server a request is pending */
 MyVGFEstate = 0;
 
-private _p = ["_vgfe","_vgfeKey","_vehicle","_player"];
+//private _p = ["_vgfe","_vgfeKey","_vehicle","_player"];
 
 private _vehSlot = _vehicle getVariable ["VEHICLE_SLOT", "ABORT"];
 if !(_vehSlot isEqualTo "ABORT") then 
@@ -29,7 +29,7 @@ if !(_vehSlot isEqualTo "ABORT") then
 	private _vehicleLockState = locked _vehicle;
 	private _vehicleData = [_className,_location,_condition,_inventory,_textures,_loadout,_nickname,_vehicleLockState];
 
-	_vgfe pushBack [_vgfeKey,_vehicleData];
+	_vgfe pushBack [_vgfeKey,_accessPoint,_vehicleData];
 	MyVGFE = _vgfe;
 	MyVGFEkey = _vgfeKey;
 	(owner _player) publicVariableClient "MyVGFE";

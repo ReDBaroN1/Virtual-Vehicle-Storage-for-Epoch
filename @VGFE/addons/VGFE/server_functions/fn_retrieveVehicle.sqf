@@ -20,7 +20,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		if (_key == (_x select 0)) exitWith {_vgfeSlot = _x; _index = _forEachIndex};
 	} forEach _vgfe;
 	private _vgfeSlot = _vgfe select _index;
-	_vgfeSlot params["_key","_vehicleData"];
+	_vgfeSlot params["_key","_accessPoint","_vehicleData"];
 	_vehicleData params ["_className","_location","_condition","_inventory","_textures","_loadout","_nickname","_vehicleLockState"];
 	_location params ["_posATL","_vectorUpDir"];	
 
@@ -42,7 +42,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		// (and cross our fingers nothing goes boom)
 
 		// Set position and orientation first just in case the vehicle is near something on repositioning
-		_vehicle setVectorDirAndUp _vectorDirUp;
+		_vehicle setVectorDirAndUp _vectorUpDir;
 		_vehicle setPosATL _posATL;
 
 		_vehicle setVariable ["BIS_enableRandomization", false];

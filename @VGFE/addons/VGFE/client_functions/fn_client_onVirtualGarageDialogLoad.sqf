@@ -55,14 +55,7 @@ if ( !(MyVGFE isEqualTo []) || !(_localVehicles isEqualTo []) ) then
 };
 
 
-private _ctrl = (_display displayCtrl 1500);
-{
-	_x params ["_key","_vehicleData"];
-	private _className = _vehicleData select 0;
-	private _index = _ctrl lbAdd getText(configFile >> "CfgVehicles" >> _className >> "displayName");
-	_ctrl lbSetValue [_index,_key];
-	_ctrl lbSetTooltip [_index,"Select Vehicle To Retrive"];
-} forEach MyVGFE;
+
 
 private _ctrl2 = (_display displayCtrl 1501);
 {
@@ -72,10 +65,21 @@ private _ctrl2 = (_display displayCtrl 1501);
 } forEach _localVehicles;
 
 MyVGFELocalVehicles = _localVehicles;
+private _ctrl = (_display displayCtrl 1500);
+
 switch (MyVFGFstorageMode) do 
 {
 	case 'garage': {
 		MyVGFE_accessPoint = "VJ";
+		{
+			_x params ["_key","_storagePoint","_vehicleData"];
+			if (_storagePoint isEqualTo "VJ") then {
+				private _className = _vehicleData select 0;
+				private _index = _ctrl lbAdd getText(configFile >> "CfgVehicles" >> _className >> "displayName");
+				_ctrl lbSetValue [_index,_key];
+				_ctrl lbSetTooltip [_index,"Select Vehicle To Retrive"];
+			};
+		} forEach MyVGFE;		
 	};
 	case 'hanger': {
 		MyVGFE_accessPoint = "VH";
@@ -83,6 +87,15 @@ switch (MyVFGFstorageMode) do
 		_ctrl ctrlSetText "Hanger";
 		_ctrl = (_display displayCtrl 1200);
 		_ctrl ctrlSetText "\A3\Air_F_EPC\Plane_CAS_01\Data\UI\Map_Plane_CAS_01_CA.paa";
+		{
+			_x params ["_key","_storagePoint","_vehicleData"];
+			if (_storagePoint isEqualTo "VH") then {
+				private _className = _vehicleData select 0;
+				private _index = _ctrl lbAdd getText(configFile >> "CfgVehicles" >> _className >> "displayName");
+				_ctrl lbSetValue [_index,_key];
+				_ctrl lbSetTooltip [_index,"Select Vehicle To Retrive"];
+			};
+		} forEach MyVGFE;
 	};
 	case 'dock': {
 		MyVGFE_accessPoint = "VDD";
@@ -90,6 +103,15 @@ switch (MyVFGFstorageMode) do
 		_ctrl ctrlSetText "Dry Dock";
 		_ctrl = (_display displayCtrl 1200);
 		_ctrl ctrlSetText "\A3\boat_f\Boat_Armed_01\data\ui\map_boat_armed_01_minigun.paa";
+		{
+			_x params ["_key","_storagePoint","_vehicleData"];
+			if (_storagePoint isEqualTo "VDD") then {
+				private _className = _vehicleData select 0;
+				private _index = _ctrl lbAdd getText(configFile >> "CfgVehicles" >> _className >> "displayName");
+				_ctrl lbSetValue [_index,_key];
+				_ctrl lbSetTooltip [_index,"Select Vehicle To Retrive"];
+			};
+		} forEach MyVGFE;		
 	};
 };
 
