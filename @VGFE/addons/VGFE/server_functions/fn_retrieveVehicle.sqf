@@ -33,6 +33,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 	
 	// [type, position, markers, placement, special]: 
 	private _vehicle = createVehicle[_classname,_posATL,[],20,"NONE"];
+
 	if !(isNull _vehicle) then 
 	{
 		_vehicle allowDamage false;

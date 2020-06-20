@@ -22,7 +22,7 @@ if (_maxStorage >= 0 && (count MyVGFE >= _maxStorage)) exitWith
 private _index = lbCurSel 1501;
 private _netIDveh = lbData [1501,_index];
 private _veh = objectFromNetId _netIDveh;
-//diag_log format["_fnc_client_storeVehicle: _index = %1 | _veh = %2 | MyVGFELocalVehicles select _index = %4 | MyMyVGFE = %3",_index,_veh,MyVGFE, MyVGFELocalVehicles select _index];
+
 ["store",[MyVGFE,MyVGFEkey,MyVGFE_accessPoint,_veh,player]] remoteExec["VGFE_fnc_handleClientRequest",2];
 closeDialog 0;
  

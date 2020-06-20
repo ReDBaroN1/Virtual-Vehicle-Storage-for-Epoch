@@ -6,5 +6,8 @@ addMissionEventHandler ["PlayerConnected",
     _this call VGFE_fnc_onPlayerJoined;
 }];
 
-diag_log "VGFE: post-initialization complete: Added onPlayerConnected event handler";
+private _ver = getNumber(configFile >> "CfgBuild" >> "VVS" >> "version");
+private _bld = getNumber(configFile >> "CfgBuild" >> "VVS" >> "build");
+private _date = getText(configFile >> "CfgBuild" >> "VVS" >> "date");
+diag_log format["VGFE: Initialized Version %1 Build %2 Date %3",_ver,_bld,_date];
 

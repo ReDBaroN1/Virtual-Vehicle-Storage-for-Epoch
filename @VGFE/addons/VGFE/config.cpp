@@ -24,10 +24,10 @@ class CfgPatches {
 };
 
 class CfgBuild {
-    class VirturalGarage {
+    class VVS {
         build = 1;
-        version = 0.1;
-        date = "6-15-20";
+        version = 0.2;
+        date = "6-19-20";
     };
 };
 
@@ -58,6 +58,7 @@ class CfgFunctions {
         class clientFunctionsVGFE {
             file="VGFE\client_functions";
             class client_accessVehicleGarage {};
+            class client_canRetrieve {};
             class client_getLocalVehicles {};
             class client_getNearbyJammers {};
             class client_isBuildOwner {};

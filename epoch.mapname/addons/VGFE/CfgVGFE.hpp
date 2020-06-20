@@ -14,4 +14,13 @@ class CfgVGFE {
 	movePlayerToDriver = 0;
 	maxStorage = 15; // Want to encourage use of VG to save server performance.
 	storageCost = 0;  // set to 0 to disable requirment for cypto for storage
+
+	/*
+	 These set a maximum range from the access point at which vehicles can be spawned.
+	 This should prevent players spawning a vehicle 10,000 meters from their location and being moved into the driver's seat 
+	 I have a separate value for each access point 
+	*/
+	maxDistFromJammer = 150;
+	maxDistFromHanger = 250;
+	maxDistFromDryDock = 500;  
 };
