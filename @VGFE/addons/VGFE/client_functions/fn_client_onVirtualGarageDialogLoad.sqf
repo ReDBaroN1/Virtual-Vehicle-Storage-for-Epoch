@@ -74,14 +74,18 @@ private _ctrl2 = (_display displayCtrl 1501);
 MyVGFELocalVehicles = _localVehicles;
 switch (MyVFGFstorageMode) do 
 {
-	case 'garage': {};
+	case 'garage': {
+		MyVGFE_accessPoint = "VJ";
+	};
 	case 'hanger': {
+		MyVGFE_accessPoint = "VH";
 		private _ctrl = (_display displayCtrl 1010);
 		_ctrl ctrlSetText "Hanger";
 		_ctrl = (_display displayCtrl 1200);
 		_ctrl ctrlSetText "\A3\Air_F_EPC\Plane_CAS_01\Data\UI\Map_Plane_CAS_01_CA.paa";
 	};
 	case 'dock': {
+		MyVGFE_accessPoint = "VDD";
 		private _ctrl = (_display displayCtrl 1010);
 		_ctrl ctrlSetText "Dry Dock";
 		_ctrl = (_display displayCtrl 1200);
