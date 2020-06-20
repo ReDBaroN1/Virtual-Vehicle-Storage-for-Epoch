@@ -11,7 +11,7 @@ private _ctrlVehDescription = (_display displayCtrl 1001);
 private _ctrlVehicleNickname = (_display displayCtrl 1009);
 _ctrlVehDescription ctrlSetStructuredText parseText _vehicleType;
 private _vgSlot = MyVGFE select _index;
-_vgSlot params["_key","_vehicleData"];
+_vgSlot params["_key","_accessPoint","_vehicleData"];
 _vehicleData params ["_className","_location","_condition","_inventory","_textures","_loadout","_nickname","_vehicleLockState"];
 private _picture = getText(configFile >> "CfgVehicles" >> _className >> "editorPreview");
 private _ctrl = (_display displayCtrl 1200);  // Where we display pictures of things
