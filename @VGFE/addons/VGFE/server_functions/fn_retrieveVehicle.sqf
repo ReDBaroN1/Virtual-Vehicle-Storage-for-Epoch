@@ -67,6 +67,27 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 			_vehicle enableDynamicSimulation true;
 		};
 
+		private _serverSettingsConfig = configFile >> "CfgEpochServer";
+		// Remove restricted weapons 
+		private _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
+		if !(_removeweapons isequalto []) then {
+			{
+				_vehicle removeWeaponGlobal _x;
+			} foreach _removeweapons;
+		};
+		//Remove restricted magazines
+		private _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
+		if !(_removemagazinesturret isequalto []) then {
+			{
+				_vehicle removeMagazinesTurret _x;
+			} foreach _removemagazinesturret;
+		};
+		// Disable Termal Equipment
+		private _disableVehicleTIE = [_serverSettingsConfig, "disableVehicleTIE", true] call EPOCH_fnc_returnConfigEntry;
+		if (_disableVehicleTIE) then {
+			_vehicle disableTIEquipment true;
+		};
+
 		// SAVE VEHICLE
 		_vehicle call EPOCH_server_save_vehicle;
 
@@ -85,13 +106,6 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 			_vehicle enableDynamicSimulation true;
 		};
 
-		private _serverSettingsConfig = configFile >> "CfgEpochServer";
-		private _disableVehicleTIE = [_serverSettingsConfig, "disableVehicleTIE", true] call EPOCH_fnc_returnConfigEntry;
-		// Disable Termal Equipment
-		if (_disableVehicleTIE) then {
-			_vehicle disableTIEquipment true;
-		};
-
 		/*
 			Functions specifice to VG - configure the vehicle now that it is added to the Epoch persistant vehicle system.
 		*/
@@ -102,7 +116,8 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		_vehicle setDamage _damage;
 		_hpd params ["_hitpoints","_hpDamage"];
 		{
-			_vehicle setHitPointDamage [_x, _hpDamage select _forEachIndex];
+//			_vehicle setHitPointDamage [_x, _hpDamage select _forEachIndex];
+			_vehicle setHitIndex [_foreachindex, _hpDamage select _forEachIndex];
 		} forEach _hitpoints;
 		_vehicle allowDamage false;
 
