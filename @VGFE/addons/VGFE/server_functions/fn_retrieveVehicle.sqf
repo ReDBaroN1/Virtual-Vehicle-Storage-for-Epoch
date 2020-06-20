@@ -40,8 +40,11 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 
 		//  The initial spawn includes a safety factor of 20 meters; lets reposition the vehicle where the player left it 
 		// (and cross our fingers nothing goes boom)
-		_vehicle setPosATL _posATL;
+
+		// Set position and orientation first just in case the vehicle is near something on repositioning
 		_vehicle setVectorDirAndUp _vectorDirUp;
+		_vehicle setPosATL _posATL;
+
 		_vehicle setVariable ["BIS_enableRandomization", false];
 		private _slot = EPOCH_VehicleSlots deleteAt 0;
 		missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];	
