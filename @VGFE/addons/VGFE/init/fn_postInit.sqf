@@ -5,7 +5,8 @@ addMissionEventHandler ["PlayerConnected",
 {
     _this call VGFE_fnc_onPlayerJoined;
 }];
-
+MyVGFEstate = 1;
+diag_log format["fn_postInit:  MyVGFEstate = %1",MyVGFEstate];
 private _ver = getNumber(configFile >> "CfgBuild" >> "VVS" >> "version");
 private _bld = getNumber(configFile >> "CfgBuild" >> "VVS" >> "build");
 private _date = getText(configFile >> "CfgBuild" >> "VVS" >> "date");

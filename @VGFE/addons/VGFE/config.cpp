@@ -46,8 +46,7 @@ class CfgFunctions {
             file="VGFE\server_functions";
             class getVehicleCondition {};
             class getVehicleInventory {};
-            class getVehicleLoadout {};   
-            class getVehicleTextures {};        
+            class getVehicleLoadout {};       
             class handleClientRequest {};
             class onPlayerJoined {};
 

@@ -6,5 +6,7 @@ Many many thanks to He-Man for his help during development
 
 Credits: 
 The Epochmod team for a terrific framework and selected code.
+https://github.com/EpochModTeam/Epoch
+
 He-Man for many helpful discussions and coding advice.
-RedBaron for debugging and coding advice.
+RedBaron for helpful discussions on design and for much testing, debugging and coding advice.

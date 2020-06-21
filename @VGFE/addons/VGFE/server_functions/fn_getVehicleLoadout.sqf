@@ -5,7 +5,8 @@
 	
 params["_vehicle"];
 private "_loadout";
-private _saveLoadout = getNumber(missionConfigFile >> "CfgVFGF" >> "saveIventory");
+private _saveLoadout = getNumber(missionConfigFile >> "CfgVFGF" >> "saveWeaponLoadouts");
+diag_log format["_fnc_getVehicleLoadout: _saveLoadout = %1",_saveLoadout];
 if (_saveLoadout == 1) then 
 {
 	private _turretLoadout = [];
@@ -23,5 +24,6 @@ if (_saveLoadout == 1) then
 	_loadout = [_turretLoadout,_pylonLoadouts];
 } else {
 	_loadout = [[],[]];
+	diag_log diag_log format["_fnc_getVehicleLoadout: _loadout = %1",_loadout];
 };
 _loadout

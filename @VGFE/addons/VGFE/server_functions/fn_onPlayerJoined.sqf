@@ -38,7 +38,7 @@ if ((_querry2 select 0) == 1 && (_querry2 select 1) isEqualType []) then
 };
 //diag_log format["_fnc_onPlayerJoined: HIVE queried for MyVGFEkey | isNil MyVGFEkey = %3 | _status = %2 | MyVGFEkey = %1",MyVGFEkey,_status,isNil "MyVGFEkey"];
 
-MyVGFEstate = 1;
+
 diag_log format["<Initialized> VGFE_Server for player named %1 | uid %2 at time %3 | MyVGFE %4 | MyVGFEkey %5",_name,_uid,diag_tickTime,MyVGFE,MyVGFEkey];
 
 {
@@ -47,8 +47,7 @@ diag_log format["<Initialized> VGFE_Server for player named %1 | uid %2 at time 
 	 "MyVGFE",
 	 "MyVGFEkey",
 	"VGFE_fnc_client_getLocalVehicles",
-	//"VGFE_fnc_clientonMouseExitLocalVehiclesList",
-	//"VGFE_fnc_clientGetLocalVehicles",
+
 	"VGFE_fnc_client_getNearbyJammers",
 	"VGFE_fnc_client_isBuildOwner",
 	"VGFE_fnc_client_onLbSelChangedLocalVehicleList",

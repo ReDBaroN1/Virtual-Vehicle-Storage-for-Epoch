@@ -1,3 +1,8 @@
+/*
+	VGFE_fnc_getVehicleInventory
+	Copyright 2020 by Ghostrider-GRG-
+*/
+
 params["_vehicle"];
 private "_inventory";
 private _saveInventory = getNumber(missionConfigFile >> "CfgVGFE" >> "saveIventory");

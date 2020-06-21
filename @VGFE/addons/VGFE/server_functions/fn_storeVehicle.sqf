@@ -5,13 +5,7 @@
 
 params["_vgfe","_vgfeKey","_accessPoint","_vehicle","_player"];
 
-/* we can only process one client request at a time so add a check for a pendiing request to access VG */
-waitUntil{MyVGFEstate == 1};
 
-/* Tell the server a request is pending */
-MyVGFEstate = 0;
-
-//private _p = ["_vgfe","_vgfeKey","_vehicle","_player"];
 
 private _vehSlot = _vehicle getVariable ["VEHICLE_SLOT", "ABORT"];
 if !(_vehSlot isEqualTo "ABORT") then 
@@ -26,8 +20,16 @@ if !(_vehSlot isEqualTo "ABORT") then
 	private _textures = getObjectTextures _vehicle;
 	private _loadout = [_vehicle] call VGFE_fnc_getVehicleLoadout;
 	private _nickname = getPlateNumber _vehicle;
+
 	private _vehicleLockState = locked _vehicle;
 	private _vehicleData = [_className,_location,_condition,_inventory,_textures,_loadout,_nickname,_vehicleLockState];
+
+
+	/* we can only process one client request at a time so add a check for a pendiing request to access VG */
+	waitUntil{MyVGFEstate == 1};
+
+	/* Tell the server a request is pending */
+	MyVGFEstate = 0;
 
 	_vgfe pushBack [_vgfeKey,_accessPoint,_vehicleData];
 	MyVGFE = _vgfe;
@@ -35,10 +37,13 @@ if !(_vehSlot isEqualTo "ABORT") then
 	(owner _player) publicVariableClient "MyVGFE";
 	(owner _player) publicVariableClient "MyVGFEkey";
 	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpiresAt");
-	//diag_log format["_fnc_storeVehicle: _expiresAt = %1 | typeName _expiresAt = %2",_expiresAt, typeName _expiresAt];
+	diag_log format["_fnc_storeVehicle: _expiresAt = %1 | typeName _expiresAt = %2",_expiresAt, typeName _expiresAt];
 	["VGFE_DATA", getPlayerUID _player, _expiresAt, MyVGFE] call EPOCH_fnc_server_hiveSETEX;
 	["VGFE_KEY",getPlayerUID _player,_expiresAt,[MyVGFEkey]] call EPOCH_fnc_server_hiveSETEX;
 
+	/* It is now safe to go ahead with other operations using MyVGFE / MyVGFEkey */
+	MyVGFEstate = 1;
+	
 	deleteVehicle _vehicle;	
 
 	private _storageCost = getNumber(missionConfigFile >> "CfgVGFE" >> "storageCost");

@@ -1,4 +1,7 @@
-
+/*
+	VGFE_fnc_getVehicleCondition
+	Copyright 2020 by Ghostrider-GRG-
+*/
 params["_vehicle"];
 private _fuel = fuel _vehicle;
 private _hitpoints = getAllHitPointsDamage _vehicle;
@@ -11,5 +14,5 @@ if!(_hitpoints isEqualTo [])then
 };
 private _damage = damage _vehicle;
 private _condition = [_fuel,_damage,_vehicleHitpoints];
-diag_log format["_fnc_getVehicleCondition: _fuel = %1 | _damage = %2 | _vehicleHitpoints = %3",_fuel,_damage,_vehicleHitpoints];
+
 _condition

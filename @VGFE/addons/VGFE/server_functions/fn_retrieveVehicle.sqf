@@ -4,12 +4,9 @@
 */
 
 params["_vgfe","_key","_player"];
-
+diag_log format["_fnc_retriveVehicle: _player = %1 | _key = %2 | _vgfe = %3",_player,_key,_vgfe];
 /* we can only process one client request at a time so add a check for a pendiing request to access VG */
-waitUntil{MyVGFEstate == 1};
 
-/* Tell the server a request is pending */
-MyVGFEstate = 0;
 
 private _vgfeSlot = [];
 private _index = -1;
@@ -22,7 +19,6 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 	private _vgfeSlot = _vgfe select _index;
 	_vgfeSlot params["_key","_accessPoint","_vehicleData"];
 	_vehicleData params ["_className","_location","_condition","_inventory","_textures","_loadout","_nickname","_vehicleLockState"];
-
 
 	/*
 		The code below was adapted from files in epoch_server.
@@ -58,6 +54,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		
 		// reload turrets / pylons here so that any epoch cleanup occurs AFTER we do that (just in case)
 		// Restore turret and pylon ammo
+		diag_log format["calling VGFE_fnc_setVehicleLoadout with _vehicle = %1 | _loadout = %2",_vehicle,_loadout];
 		[_vehicle,_loadout] call VGFE_fnc_setVehicleLoadout;
 
 		// Restore any nickname information on license plate 
@@ -139,7 +136,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 			private _vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 			["VehicleLock", _vehLockHiveKey] call EPOCH_fnc_server_hiveDEL;
 		};
-		
+
 		// Add to A3 remains collector
 		addToRemainsCollector[_vehicle];	
 
@@ -156,6 +153,11 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 			_vehicle enableDynamicSimulation true;
 		};
 
+		waitUntil{MyVGFEstate == 1};
+
+		/* Tell the server a request is pending */
+		MyVGFEstate = 0;
+
 		/* Vehicle successfully spawned, update the VG */
 		_vgfe deleteAt _index;
 		MyVGFE = _vgfe;
@@ -166,6 +168,9 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpiresAt");
 		["VGFE_DATA",_playerUID,_expiresAt,_vgfe] call EPOCH_fnc_server_hiveSETEX;
 
+		/* Tell the server a request can be processed */
+		MyVGFEstate = 1;
+		
 		/* tell the player the vehicle was retrieved successfully */
 		private _displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
 		private _m = format["%1 has been retrieved from the garage",_displayName];
