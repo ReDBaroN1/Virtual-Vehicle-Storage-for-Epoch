@@ -170,10 +170,10 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 
 		/* Tell the server a request can be processed */
 		MyVGFEstate = 1;
-		
+
 		/* tell the player the vehicle was retrieved successfully */
 		private _displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
-		private _m = format["%1 has been retrieved from the garage",_displayName];
+		private _m = format["%1 has been retrieved from storagee",_displayName];
 		[_m] remoteExec["systemChat",owner _player];
 		[_m] remoteExec["diag_log",owner _player];
 		[_m,5] remoteExec["EPOCH_Message",owner _player];
@@ -181,7 +181,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 	} else {
 		/* tell the player something went wrong */
 		private _displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
-		_m = format["Unable to retrieve %1 from the garage",_displayName];
+		_m = format["Unable to retrieve %1 from storage",_displayName];
 		[_m] remoteExec["systemChat",owner _player];
 		[_m] remoteExec["diag_log",owner _player];
 		[_m] remoteExec["EPOCH_Message",owner _player];		

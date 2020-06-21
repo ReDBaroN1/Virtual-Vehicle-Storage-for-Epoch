@@ -18,14 +18,12 @@ private _pylonnames = "true" configClasses (configFile >> "CfgVehicles" >> typeO
 	_vehicle setPylonLoadOut [_x,""];
 } forEach _pylonNames;
 
-private _saveLoadout = getNumber(missionConfigFile >> "CfgVFGF" >> "saveWeaponLoadouts");
-diag_log format["_fnc_setVehicleLoadout: saveLoadout = %1",_saveLoadout];
+private _saveLoadout = getNumber(missionConfigFile >> "CfgVGFE" >> "saveWeaponLoadouts");
 if (_saveLoadout == 1) then 
 {
 	_loadout params["_turretLoadout","_pylonLoadout"];
 	diag_log format["_fnc_getVehicleLoadout: _turretLoadout = %1",_turretLoadout];
-	diag_log format["_fnc_getVehicleLoadout: _pylonLoadouts = ?%1",_pylonLoadouts];	
-
+	diag_log format["_fnc_getVehicleLoadout: _pylonLoadouts = %1",_pylonLoadout];	
 
 	// deal with turrets;
 	{
