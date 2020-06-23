@@ -16,3 +16,4 @@ private _damage = damage _vehicle;
 private _condition = [_fuel,_damage,_vehicleHitpoints];
 
 _condition
+

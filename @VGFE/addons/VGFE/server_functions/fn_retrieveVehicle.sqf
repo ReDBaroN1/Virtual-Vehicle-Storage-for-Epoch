@@ -166,9 +166,9 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 
 		/* tell the player the vehicle was retrieved successfully */
 		private _displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
-		private _m = format["%1 has been retrieved from storagee",_displayName];
+		private _m = format["%1 has been retrieved from storage",_displayName];
 		[_m] remoteExec["systemChat",owner _player];
-		[_m] remoteExec["diag_log",owner _player];
+		//[_m] remoteExec["diag_log",owner _player];
 		[_m,5] remoteExec["EPOCH_Message",owner _player];
 		[_vehicle] remoteExec["VGFE_fnc_client_vehicleRetrieved",owner _player];
 	} else {

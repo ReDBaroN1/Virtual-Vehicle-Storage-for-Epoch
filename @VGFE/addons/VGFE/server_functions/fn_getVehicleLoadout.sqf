@@ -9,7 +9,9 @@ private _saveLoadout = getNumber(missionConfigFile >> "CfgVGFE" >> "saveWeaponLo
 if (_saveLoadout == 1) then 
 {
 
+
 	private _mags = magazinesAllTurrets _vehicle;
+
 	private _pylonnames = "true" configClasses (configFile >> "CfgVehicles" >> typeOf _vehicle >> "Components" >> "TransportPylonsComponent" >> "pylons") apply {configName _x};
 	private _pylonLoadouts = [];
 	private _pylonMagazines = getPylonMagazines _vehicle;
@@ -21,6 +23,8 @@ if (_saveLoadout == 1) then
 	_loadout = [_mags,_pylonLoadouts];
 } else {
 	_loadout = [[],[]];
+
+
 
 };
 _loadout

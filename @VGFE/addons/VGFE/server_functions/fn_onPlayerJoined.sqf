@@ -47,6 +47,8 @@ diag_log format["<Initialized> VGFE_Server for player named %1 | uid %2 at time 
 	 "MyVGFEkey",
 	"VGFE_fnc_client_getLocalVehicles",
 
+
+
 	"VGFE_fnc_client_getNearbyJammers",
 	"VGFE_fnc_client_isBuildOwner",
 	"VGFE_fnc_client_onLbSelChangedLocalVehicleList",

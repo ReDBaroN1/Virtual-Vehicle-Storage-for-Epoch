@@ -13,12 +13,12 @@ if !(_vehSlot isEqualTo "ABORT") then
 	_vgfeKey = _vgfeKey + 1;
 
 	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpires");
-	private _inventory = [_vehicle] call VGFE_fnc_getVehicleInventory;
+	//private _inventory = [_vehicle] call VGFE_fnc_getVehicleInventory;
 	private _vehicleData = [
 		typeOf _vehicle,
 		[getPosATL _vehicle,[vectordir _vehicle,vectorup _vehicle]],
 		[_vehicle] call VGFE_fnc_getVehicleCondition,
-		_inventory,
+		[_vehicle] call VGFE_fnc_getVehicleInventory,
 		getObjectTextures _vehicle,
 		[_vehicle] call VGFE_fnc_getVehicleLoadout,
 		getPlateNumber _vehicle,
@@ -61,9 +61,9 @@ if !(_vehSlot isEqualTo "ABORT") then
 	["Vehicle", _vehHiveKey] call EPOCH_fnc_server_hiveDEL;
 	EPOCH_VehicleSlots pushBackUnique _vehSlot;
 	missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
-	[format["Vehicle Stored | _key updated to %1",MyVGFEkey]] remoteExec["systemChat",owner _player];
+	[format["Vehicle Stored"]] remoteExec["systemChat",owner _player];
 	["Vehicle Stored",5] remoteExec["Epoch_Message",owner player];
-	[format["Vehicle Stored | _key updated to %1",MyVGFEkey]] remoteExec["diag_log",owner _player];
+	//[format["Vehicle Stored | _key updated to %1",MyVGFEkey]] remoteExec["diag_log",owner _player];
 };
 
 /*  TODO: Add error condition when vehicle can not be stored - message player  */
