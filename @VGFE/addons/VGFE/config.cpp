@@ -67,16 +67,15 @@ class CfgFunctions {
             class client_canRetrieve {};
             class client_getLocalVehicles {};
             class client_getNearbyJammers {};
-            class client_isBuildOwner {};
+
             class client_onLbSelChangedLocalVehicleList {};
             class client_onLbSelChangedStoredVehicleList {};
             class client_onVirtualGarageDialogLoad {};
-            class client_setFocusOnLocalVehicleList {};
-            class client_setFocusOnStoredVehicleList {};
+
             class client_retrieveVehicle {};
             class client_vehicleRetrieved {};            
             class client_storeVehicle {};
-            class client_init {};
+
             class client_log {};
         };
     };

@@ -8,7 +8,7 @@ private "_vehTypes";
 switch (MyVFGFstorageMode) do 
 {
 	case "player": {_vehTypes = ["Car","Tank","Air","Ship"]};
-	case "garage": {_vehTypes = ["Car","Tank","Air","Ship"]};
+	case "jammer": {_vehTypes = ["Car","Tank","Air","Ship"]};
 	case "hanger": {_vehTypes = ["Air"]};
 	case "dock": {_vehTypes = ["Ship"]};
 };
@@ -63,7 +63,7 @@ private _ctrl2 = (_display displayCtrl 1501);
 
 switch (MyVFGFstorageMode) do 
 {
-	case 'garage': {
+	case 'jammer': {
 		MyVGFE_accessPoint = "VJ";
 	};
 	case 'hanger': {

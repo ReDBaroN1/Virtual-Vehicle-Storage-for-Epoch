@@ -22,8 +22,7 @@ private _saveLoadout = getNumber(missionConfigFile >> "CfgVGFE" >> "saveWeaponLo
 if (_saveLoadout == 1) then 
 {
 	_loadout params["_turretLoadout","_pylonLoadout"];
-	diag_log format["_fnc_getVehicleLoadout: _turretLoadout = %1",_turretLoadout];
-	diag_log format["_fnc_getVehicleLoadout: _pylonLoadouts = %1",_pylonLoadout];	
+
 
 	// deal with turrets;
 	{

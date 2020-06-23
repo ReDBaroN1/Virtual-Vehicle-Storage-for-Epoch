@@ -5,7 +5,7 @@
 private _display = uiNamespace getVariable["VirtualGarageDialog",""];	
 private _ctrl = (_display displayCtrl 1501);
 private _index = lbCurSel 1501;
-//systemChat format["_ctrl = %1 | _index = %2",_ctrl,_index];
+
 private _netID = _ctrl lbData _index;  //  object
 private _vehicle = objectFromNetId _netId;
 private _className = typeOf (_vehicle);  //  description based on classname
@@ -24,7 +24,7 @@ if !(VGFE_activeList isEqualTo "local") then
 	_ctrl ctrlSetText "STORE";
 	_ctrl ctrlSetToolTip "Press to Store the Selected Vehicle";
 	_ctrl buttonSetAction "[] call VGFE_fnc_client_StoreVehicle;";
-	//systemChat "Focus set for Local Vehicles List";
+
 	{
 		ctrlShow[_x,true];					
 	} forEach [1009,1600];

@@ -22,7 +22,6 @@ if ((_querry select 0) == 1 && (_querry select 1) isEqualType []) then
 };
 
 private _querry2 = (["VGFE_KEY",_uid] call EPOCH_fnc_server_hiveGETRANGE);
-//diag_log format["_fnc_onPlayerJoined: _querry2 = %1",_querry2];
 private ["_status","_vgfeKey"];
 if ((_querry2 select 0) == 1 && (_querry2 select 1) isEqualType []) then 
 {
@@ -36,7 +35,7 @@ if ((_querry2 select 0) == 1 && (_querry2 select 1) isEqualType []) then
 } else {
 	MyVGFEkey = 0;	
 };
-//diag_log format["_fnc_onPlayerJoined: HIVE queried for MyVGFEkey | isNil MyVGFEkey = %3 | _status = %2 | MyVGFEkey = %1",MyVGFEkey,_status,isNil "MyVGFEkey"];
+
 
 
 diag_log format["<Initialized> VGFE_Server for player named %1 | uid %2 at time %3 | MyVGFE %4 | MyVGFEkey %5",_name,_uid,diag_tickTime,MyVGFE,MyVGFEkey];

@@ -13,17 +13,17 @@ if !(_vehSlot isEqualTo "ABORT") then
 	_vgfeKey = _vgfeKey + 1;
 
 	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpires");
-	private _className = typeOf _vehicle;
-	private _location = [getPosATL _vehicle, [vectorDir _vehicle, vectorUp _vehicle]];
-	private _condition = [_vehicle] call VGFE_fnc_getVehicleCondition;
-	private _inventory = [_vehicle] call EPOCH_server_CargoSave;
-	private _textures = getObjectTextures _vehicle;
-	private _loadout = [_vehicle] call VGFE_fnc_getVehicleLoadout;
-	private _nickname = getPlateNumber _vehicle;
-
-	private _vehicleLockState = locked _vehicle;
-	private _vehicleData = [_className,_location,_condition,_inventory,_textures,_loadout,_nickname,_vehicleLockState];
-
+	private _inventory = [_vehicle] call VGFE_fnc_getVehicleInventory;
+	private _vehicleData = [
+		typeOf _vehicle,
+		[getPosATL _vehicle,[vectordir _vehicle,vectorup _vehicle]],
+		[_vehicle] call VGFE_fnc_getVehicleCondition,
+		_inventory,
+		getObjectTextures _vehicle,
+		[_vehicle] call VGFE_fnc_getVehicleLoadout,
+		getPlateNumber _vehicle,
+		locked _vehicle
+	];
 
 	/* we can only process one client request at a time so add a check for a pendiing request to access VG */
 	waitUntil{MyVGFEstate == 1};
@@ -37,13 +37,12 @@ if !(_vehSlot isEqualTo "ABORT") then
 	(owner _player) publicVariableClient "MyVGFE";
 	(owner _player) publicVariableClient "MyVGFEkey";
 	private _expiresAt = getNumber(missionConfigFile >> "CfgVGFE" >> "vgfeExpiresAt");
-	diag_log format["_fnc_storeVehicle: _expiresAt = %1 | typeName _expiresAt = %2",_expiresAt, typeName _expiresAt];
 	["VGFE_DATA", getPlayerUID _player, _expiresAt, MyVGFE] call EPOCH_fnc_server_hiveSETEX;
 	["VGFE_KEY",getPlayerUID _player,_expiresAt,[MyVGFEkey]] call EPOCH_fnc_server_hiveSETEX;
 
 	/* It is now safe to go ahead with other operations using MyVGFE / MyVGFEkey */
 	MyVGFEstate = 1;
-	
+
 	deleteVehicle _vehicle;	
 
 	private _storageCost = getNumber(missionConfigFile >> "CfgVGFE" >> "storageCost");
@@ -65,9 +64,9 @@ if !(_vehSlot isEqualTo "ABORT") then
 	[format["Vehicle Stored | _key updated to %1",MyVGFEkey]] remoteExec["systemChat",owner _player];
 	["Vehicle Stored",5] remoteExec["Epoch_Message",owner player];
 	[format["Vehicle Stored | _key updated to %1",MyVGFEkey]] remoteExec["diag_log",owner _player];
-
-
 };
+
+/*  TODO: Add error condition when vehicle can not be stored - message player  */
 
 /* tell the server the VG is ready to handle other requests */
 MyVGFEstate = 1;

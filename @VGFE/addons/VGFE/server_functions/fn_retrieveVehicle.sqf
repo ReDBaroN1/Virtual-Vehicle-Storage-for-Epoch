@@ -35,11 +35,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		_vehicle allowDamage false;
 		_vehicle call EPOCH_server_setVToken;
 
-		/*
-			set up vehicle skins, license plate, turret and pylons ammo, damage and hitpoints and fuel.
-		*/
 
-		// set direction, attitude and position of vehicle (and cross your fingers it does not explode)
 		[_vehicle,_location] call VGFE_fnc_setVehicleLocation;
 
 		// set fuel, damage and hitpoints
@@ -53,8 +49,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		[_vehicle,_textures] call VGFE_fnc_setVehicleTextures;
 		
 		// reload turrets / pylons here so that any epoch cleanup occurs AFTER we do that (just in case)
-		// Restore turret and pylon ammo
-		diag_log format["calling VGFE_fnc_setVehicleLoadout with _vehicle = %1 | _loadout = %2",_vehicle,_loadout];
+
 		[_vehicle,_loadout] call VGFE_fnc_setVehicleLoadout;
 
 		// Restore any nickname information on license plate 
@@ -140,9 +135,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		// Add to A3 remains collector
 		addToRemainsCollector[_vehicle];	
 
-		/*
-			Functions specifice to VG - configure the vehicle now that it is added to the Epoch persistant vehicle system.
-		*/
+
 
 		_vehicle allowDamage true;
 

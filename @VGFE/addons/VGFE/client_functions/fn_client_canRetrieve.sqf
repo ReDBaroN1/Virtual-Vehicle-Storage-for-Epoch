@@ -1,4 +1,7 @@
-
+/*
+	VGFE_fnc_client_canRetrieve
+	Copyright 2020 by Ghostrider-GRG-
+*/
 
 params["_storagePoint","_allowedStoragePoint","_vehicleData"];
 private _result = 0;
