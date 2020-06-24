@@ -3,6 +3,7 @@
 	Copyright 2020 by Ghostrider-GRG-
 */
 private _jammerRange = getnumber (missionConfigFile >> "CfgEpochClient" >> "buildingJammerRange");
+
 private _freqJammers = nearestObjects[
 	getPosATL player,
 	[] call EPOCH_JammerClasses, 

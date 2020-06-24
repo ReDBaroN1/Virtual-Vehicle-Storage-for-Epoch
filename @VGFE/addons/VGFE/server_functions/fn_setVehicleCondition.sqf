@@ -4,11 +4,8 @@
 */
 
 params["_vehicle","_condition"];
-
 _vehicle allowDamage true;
-
 _condition params["_fuel","_damage","_vehicleHitPoints"];
-
 private _reapplyFuel = getNumber(missionConfigFile >> "CfgVGFE" >> "reapplyFuel");
 if (_reapplyFuel == 1) then 
 {

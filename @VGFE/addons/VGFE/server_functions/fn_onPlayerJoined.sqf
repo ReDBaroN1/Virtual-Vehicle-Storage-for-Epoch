@@ -22,6 +22,7 @@ if ((_querry select 0) == 1 && (_querry select 1) isEqualType []) then
 };
 
 private _querry2 = (["VGFE_KEY",_uid] call EPOCH_fnc_server_hiveGETRANGE);
+
 private ["_status","_vgfeKey"];
 if ((_querry2 select 0) == 1 && (_querry2 select 1) isEqualType []) then 
 {
@@ -36,8 +37,6 @@ if ((_querry2 select 0) == 1 && (_querry2 select 1) isEqualType []) then
 	MyVGFEkey = 0;	
 };
 
-
-
 diag_log format["<Initialized> VGFE_Server for player named %1 | uid %2 at time %3 | MyVGFE %4 | MyVGFEkey %5",_name,_uid,diag_tickTime,MyVGFE,MyVGFEkey];
 
 {
@@ -46,9 +45,6 @@ diag_log format["<Initialized> VGFE_Server for player named %1 | uid %2 at time 
 	 "MyVGFE",
 	 "MyVGFEkey",
 	"VGFE_fnc_client_getLocalVehicles",
-
-
-
 	"VGFE_fnc_client_getNearbyJammers",
 	"VGFE_fnc_client_isBuildOwner",
 	"VGFE_fnc_client_onLbSelChangedLocalVehicleList",

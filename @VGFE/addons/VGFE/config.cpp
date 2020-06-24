@@ -49,8 +49,6 @@ class CfgFunctions {
             class getVehicleLoadout {};       
             class handleClientRequest {};
             class onPlayerJoined {};
-
-
             class setVehicleCondition {};
             class setVehicleInventory {};
             class setVehicleLoadout {};
@@ -67,15 +65,12 @@ class CfgFunctions {
             class client_canRetrieve {};
             class client_getLocalVehicles {};
             class client_getNearbyJammers {};
-
             class client_onLbSelChangedLocalVehicleList {};
             class client_onLbSelChangedStoredVehicleList {};
             class client_onVirtualGarageDialogLoad {};
-
             class client_retrieveVehicle {};
             class client_vehicleRetrieved {};            
             class client_storeVehicle {};
-
             class client_log {};
         };
     };

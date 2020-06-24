@@ -5,7 +5,6 @@
 private _display = uiNamespace getVariable["VirtualGarageDialog",""];	
 private _ctrl = (_display displayCtrl 1501);
 private _index = lbCurSel 1501;
-
 private _netID = _ctrl lbData _index;  //  object
 private _vehicle = objectFromNetId _netId;
 private _className = typeOf (_vehicle);  //  description based on classname

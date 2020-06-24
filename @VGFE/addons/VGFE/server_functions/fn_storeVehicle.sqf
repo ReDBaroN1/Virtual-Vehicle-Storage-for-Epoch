@@ -5,8 +5,6 @@
 
 params["_vgfe","_vgfeKey","_accessPoint","_vehicle","_player"];
 
-
-
 private _vehSlot = _vehicle getVariable ["VEHICLE_SLOT", "ABORT"];
 if !(_vehSlot isEqualTo "ABORT") then 
 {  //  So we do not store temporary vehicles
@@ -64,6 +62,11 @@ if !(_vehSlot isEqualTo "ABORT") then
 	[format["Vehicle Stored"]] remoteExec["systemChat",owner _player];
 	["Vehicle Stored",5] remoteExec["Epoch_Message",owner player];
 	//[format["Vehicle Stored | _key updated to %1",MyVGFEkey]] remoteExec["diag_log",owner _player];
+} else {
+	private _error = format["ERROR: %1 is a temporary vehicle and can not be stored",getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "displayName")];
+	[_error] remoteExec["systemChat",(owner _player)];
+	[_error,5] remoteExec["EPOCH_Message",(owner _player)];
+	[_error] remoteExec["diag_log",(owner _player)];
 };
 
 /*  TODO: Add error condition when vehicle can not be stored - message player  */

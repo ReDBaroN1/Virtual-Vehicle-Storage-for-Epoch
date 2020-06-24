@@ -13,7 +13,6 @@ switch (MyVFGFstorageMode) do
 	case "dock": {_vehTypes = ["Ship"]};
 };
 private _localVehicles = [_vehTypes,MyVFGFstorageMode] call VGFE_fnc_client_getLocalVehicles;
-
  
 {
 	ctrlShow[_x,false];

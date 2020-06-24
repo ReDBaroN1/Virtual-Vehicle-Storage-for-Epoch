@@ -14,6 +14,7 @@ params["_vehicle","_loadout"];
 
 // clear any loaded pylon ammo
 private _pylonnames = "true" configClasses (configFile >> "CfgVehicles" >> typeOf _vehicle >> "Components" >> "TransportPylonsComponent" >> "pylons") apply {configName _x};
+
 {
 	_vehicle setPylonLoadOut [_x,""];
 } forEach _pylonNames;
@@ -23,14 +24,11 @@ if (_saveLoadout == 1) then
 {
 	_loadout params["_turretLoadout","_pylonLoadout"];
 
-
 	// deal with turrets;
 	{
 		_x params["_magazine","_turretPath","_ammoCount"];
 		_vehicle addMagazineTurret[_magazine,_turretPath,_ammoCount];
 	} forEach _turretLoadout;
-
-
 
 	private _pylonMagazines = getPylonMagazines _vehicle;
 	// deal with pylons 

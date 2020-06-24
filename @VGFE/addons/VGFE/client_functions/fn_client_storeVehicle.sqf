@@ -18,7 +18,6 @@ if (_maxStorage >= 0 && (count MyVGFE >= _maxStorage)) exitWith
 	[_m,5] call EPOCH_Message;		
 };
 
-
 private _index = lbCurSel 1501;
 private _netIDveh = lbData [1501,_index];
 private _veh = objectFromNetId _netIDveh;
