@@ -20,3 +20,11 @@ CLIENT [Mission.pbo]:
 BATTLEYE:
 
 8. Merge remoteexec.txt to add the exception
+
+INFISTAR
+
+9. Add 720 to the list of allowed idd's, here: 
+_allowedIDDs =
+[
+
+];
