@@ -1,0 +1,19 @@
+
+Updated to Version 0.4 on July 1, 2020
+
+To update:
+1. Pack @vgfe\addons\vgfe 
+2. copy the pbo to the @vgfe\addons folder or @epochhive\addons folder on your server.
+3. merge the new CfgVGFE in epoch.mapname\addons\VGFE with the corresponding file in your mission.
+4. repack your mission.pbo
+Thats it !
+
+Added one setting:
+  preciseSpawnLocation = 0/1;  // Set to 0 to have the vehicle spawned at the spot it was stored from; set this to 1 to have the vehicle spawned in a safe spot within 20 meters.
+
+Fixed one exploit:
+  Players can no longer store temporary vehicles 
+
+Fixed one small error:
+   Lock ownership was improerly set when the player was part of a group.
+
