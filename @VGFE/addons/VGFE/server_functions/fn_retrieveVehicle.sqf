@@ -27,7 +27,7 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 	private _safeSpawn = getNumber(missionConfigFile >> "CfgVGFE" >> "preciseSpawnLocation");
 	
 	// [type, position, markers, placement, special]: 
-	private _vehicle = createVehicle[_classname,[0,0,0],[],20,"NONE"];
+	private _vehicle = createVehicle[_classname,(_location select 0),[],20,"NONE"];
 
 	if !(isNull _vehicle) then 
 	{
