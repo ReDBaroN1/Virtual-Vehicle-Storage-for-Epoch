@@ -168,16 +168,16 @@ if !(EPOCH_VehicleSlots isEqualTo []) then
 		/* tell the player the vehicle was retrieved successfully */
 		private _displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
 		private _m = format["%1 has been retrieved from storage",_displayName];
-		[_m] remoteExec["systemChat",owner _player];
-		[_m,5] remoteExec["EPOCH_Message",owner _player];
-		[_vehicle] remoteExec["VGFE_fnc_client_vehicleRetrieved",owner _player];
+		[_m] remoteExec["systemChat",_player];
+		[_m,5] remoteExec["EPOCH_Message",_player];
+		[_vehicle] remoteExec["VGFE_fnc_client_vehicleRetrieved",_player];
 	} else {
 		/* tell the player something went wrong */
 		private _displayName = getText(configFile >> "CfgVehicles" >> _className >> "displayName");
 		_m = format["Unable to retrieve %1 from storage",_displayName];
-		[_m] remoteExec["systemChat",owner _player];
-		[_m] remoteExec["diag_log",owner _player];
-		[_m] remoteExec["EPOCH_Message",owner _player];		
+		[_m] remoteExec["systemChat",_player];
+		[_m] remoteExec["diag_log",_player];
+		[_m] remoteExec["EPOCH_Message",_player];		
 	};
 } else {
 	/*
